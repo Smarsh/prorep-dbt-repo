@@ -1,0 +1,17 @@
+# ======================================================
+# == Prohibited Patterns File for Git-Secrets-Scanner ==
+# ======================================================
+# Add all prohibited regular expression patterns to this
+# file (one per line).  Make sure to add a comment line
+# describing each defined pattern so it is clear to the
+# team what it is for.
+
+# -----------------------------------------------------
+# -- prohibited pattern definitions and descriptions --
+# -----------------------------------------------------
+
+# description of the prohibited pattern here
+some\-prohibited\-example\-pattern
+
+# description of the prohibited pattern here
+some\-other\-prohibited\-example\-pattern

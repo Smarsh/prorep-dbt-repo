@@ -1,0 +1,18 @@
+# ===================================================
+# == Allowed Patterns File for Git-Secrets-Scanner ==
+# ===================================================
+# Add all allowed regular expression patterns (false positives)
+# to this file (one per line).  Make sure to add a comment line
+# describing each defined pattern so it is clear to the team
+# what it is for.  This file is NOT the same as .gitignore - you
+# cannot allow entire files/folders.
+
+# --------------------------------------------------
+# -- allowed pattern definitions and descriptions --
+# --------------------------------------------------
+
+# description of the allowed pattern here
+some\-example\-pattern
+
+# description of the allowed pattern here
+some\-other\-example\-pattern

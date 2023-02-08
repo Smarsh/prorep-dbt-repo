@@ -1,0 +1,47 @@
+# =========================================
+# == Update CHANGELOG with Release Notes ==
+# =========================================
+# This action will call a re-usable workflow
+# to update the CHANGELOG when new Release is
+# created. The CHANGELOG in your master/main
+# branches will be prepended by the
+# "Release Notes" that triggered the action.
+# You can optionally include the develop
+# and/or qa branches by setting the 
+# "include_develop_branch" and/or 
+# "include_qa_branch" variable to true or
+# false respectively.
+#
+# ************** IMPORTANT ********************
+# The service account user:
+# "service-user-actions" will need to be
+# granted the "admin" role on this
+# repo to ensure this action has the required
+# permissions to update the CHANGELOG in your
+# protected branches (develop, qa, master/main)
+# *********************************************
+#
+# Relase Notes Update (optional)
+# In addition to updating the CHANGELOG, this
+# action can also update this release's "body"
+# with the formated notes. This is on by default
+# and can be configured by updating the
+# "update_release_body" varialbe
+# =========================================
+
+name: Update-CHANGELOG
+
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    uses: Smarsh/proarch-github-reusable-workflows/.github/workflows/reusable-workflow-update-changelog.yml@main
+    with:
+      update_release_body: true
+      include_develop_branch: true
+      include_qa_branch: false
+    secrets:
+      access_token: ${{ secrets.SECRETS_SCANNER_ACCESS_TOKEN }}

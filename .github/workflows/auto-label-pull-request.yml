@@ -1,0 +1,49 @@
+# ======================================
+# ==     Auto Label Pull Requests     ==
+# ======================================
+# This action will call a re-usable
+# workflow to automatically create 
+# and add labels to new pull requests if
+# the originating branch name starts with
+# one of the following strings:
+#    bug/
+#    chore/
+#    docs/
+#    feature/
+#    release/
+#    spike/
+#
+# The following labels are created
+# if they do not alread exist in
+# your repo:
+#   "bug", "chore", "documentation",
+#   "feature", "release", "spike"
+#
+# Update the "allow_added_labels"
+# boolean flag below if you would
+# like to retain additional labels
+# not listed above. By default this
+# action will only craete/preserve
+# these 6 labels used for auto
+# assignment.
+# 
+# Detailed docs can be found here:
+# https://github.com/Smarsh/proarch-github-reusable-workflows#-auto-label-pull-requests
+# ======================================
+
+name: auto-label-pull-request
+
+on:
+  pull_request:
+    branches: [ develop, qa, master, main ]
+
+  # allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    uses: Smarsh/proarch-github-reusable-workflows/.github/workflows/reusable-workflow-auto-label-pull-request.yml@main
+    with:
+      allow_added_labels: false
+    secrets:
+      access_token: ${{ secrets.SECRETS_SCANNER_ACCESS_TOKEN }}
